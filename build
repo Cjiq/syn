@@ -1,0 +1,5 @@
+#!/bin/bash
+BIN_NAME=syn
+GOOS=darwin GOARCH=amd64 go build -o dist/macOS/$BIN_NAME main.go
+GOOS=linux GOARCH=amd64 go build -o dist/linux/$BIN_NAME main.go
+GOOS=windows GOARCH=amd64 go build -o dist/windows/$BIN_NAME.exe main.go
