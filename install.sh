@@ -9,7 +9,11 @@ fi
 echo "Removing old installation.."
 sudo rm -rf $INSTALL_PATH
 echo "Copying files.."
-sudo cp -rf ./dist/linux $INSTALL_PATH
+if [ "$(uname)" == "Darwin" ]; then
+	sudo cp -rf ./dist/macOS $INSTALL_PATH
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+	sudo cp -rf ./dist/linux $INSTALL_PATH
+fi
 sudo ln -sf $INSTALL_PATH/$BIN_NAME /usr/local/bin/$BIN_NAME
 sudo chmod +x $INSTALL_PATH/$BIN_NAME
 
