@@ -1,5 +1,5 @@
 # Synonyms - syn
-Small simple program to find synonyms of english words using the thesaurus API
+Small simple program to find synonyms of English words using the thesaurus API
 
 # Usage
 Thesaurus.com v1.0
