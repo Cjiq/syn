@@ -92,7 +92,7 @@ func main() {
 				return def.Synonyms[i].Similarity > def.Synonyms[j].Similarity
 			})
 			for j, sym := range def.Synonyms {
-				if j < 5 && sym.Similarity > 70 {
+				if j < 5 && sym.Similarity > 40 {
 					fmt.Printf("  %s\n", trim(sym.Term))
 					count = count + 1
 				}
