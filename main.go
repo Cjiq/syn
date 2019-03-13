@@ -54,7 +54,7 @@ func main() {
 			showArgumentErr()
 			os.Exit(1)
 		}
-		searchTerm := args[0]
+		searchTerm = args[0]
 		if searchTerm == "" {
 			showArgumentErr()
 			os.Exit(1)
@@ -86,6 +86,7 @@ func main() {
 		d.Printf("Synonyms for: %s\n", searchTerm)
 
 		defs := result.ResultSet.DefinitionData.Definitions
+		count := 0
 		for _, def := range defs {
 			sort.Slice(def.Synonyms, func(i, j int) bool {
 				return def.Synonyms[i].Similarity > def.Synonyms[j].Similarity
@@ -93,8 +94,12 @@ func main() {
 			for j, sym := range def.Synonyms {
 				if j < 5 && sym.Similarity > 70 {
 					fmt.Printf("  %s\n", trim(sym.Term))
+					count = count + 1
 				}
 			}
+		}
+		if count == 0 {
+			fmt.Println("No matches found.")
 		}
 		fmt.Println()
 
